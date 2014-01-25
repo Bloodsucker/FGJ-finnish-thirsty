@@ -6,13 +6,16 @@ fgj.entities.gameMap = enchant.Class.create(enchant.Map, {
 		enchant.Map.call(this, fgj.def.map.tile.width, fgj.def.map.tile.height);
 		this.image = game.assets[fgj.def.res.image.map];
 
-		this.oMap = this.createRandomMap(fgj.def.map.width, fgj.def.map.height);
+		this.oMap = this.createRandomMap(fgj.def.map.width-1, fgj.def.map.height-1);
 		this.vMap = [];
 		for(var y=0; y<this.oMap.length; y++){
 			this.vMap[y] = this.oMap[y].slice();
 		}
 		this.loadData(this.vMap);
 		this.collisionData = this.createCollisionData(this.oMap);
+
+		console.table(this.oMap);
+		console.table(this.collisionData);
 	},
 	createRandomMap: function (width, height) {
 		var maze = function(x,y) {
@@ -103,9 +106,6 @@ fgj.entities.gameMap = enchant.Class.create(enchant.Map, {
 			return text.join('');
 		}
 
-		console.table(m.horiz);
-		console.table(m.verti);
-		console.log(m);
 		console.log(display(m));
 
 		var hwall = m.verti;
@@ -156,8 +156,6 @@ fgj.entities.gameMap = enchant.Class.create(enchant.Map, {
 
 		newMap[1][0] = -1;
 		newMap[height-1][width] = -1;
-
-		console.table(newMap);
 
 		return newMap;
 	},

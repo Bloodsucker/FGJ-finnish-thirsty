@@ -21,8 +21,8 @@ fgj.def.map = {
 		width: 32,
 		height: 32
 	},
-	width: 14,
-	height: 8,
+	width: 15,
+	height: 9,
 
 	collisions: [fgj.def.res.default]
 };
