@@ -134,7 +134,7 @@ fgj.entities.gameMap = enchant.Class.create(enchant.Map, {
 						newMap[y][x] = fgj.def.res.default;
 					} else if(vwall[Math.floor(y/2)][Math.floor(x/2)]) {
 						newMap[y][x] = fgj.def.res.default;
-					} else if(vwall[Math.floor(y/2)][Math.floor(x/2)+1]) {
+					} else if(vwall[Math.floor(y/2)+1][Math.floor(x/2)]) {
 						newMap[y][x] = fgj.def.res.default;
 					} else {
 						newMap[y][x] = -1;
