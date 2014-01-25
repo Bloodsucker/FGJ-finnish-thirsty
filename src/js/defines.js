@@ -7,7 +7,7 @@ fgj.def.window = {
 };
 
 fgj.def.res = {
-	default: 0,
+	wall: 0,
 	water: 1,
 
 	image: {
@@ -24,7 +24,7 @@ fgj.def.map = {
 	width: 15,
 	height: 9,
 
-	collisions: [fgj.def.res.default]
+	collisions: [fgj.def.res.wall]
 };
 
 fgj.def.game = {

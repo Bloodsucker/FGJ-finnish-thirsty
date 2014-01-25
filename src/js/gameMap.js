@@ -119,23 +119,23 @@ fgj.entities.gameMap = enchant.Class.create(enchant.Map, {
 			for(var x=0; x<width; x++) {
 				if(y%2==0 && x%2!=0) {
 					if(!vwall[y/2][Math.floor(x/2)])
-						newMap[y][x] = fgj.def.res.default;
+						newMap[y][x] = fgj.def.res.wall;
 					else
 						newMap[y][x] = -1;
 				} else if(y%2!=0 && x%2==0) {
 					if(!hwall[Math.floor(y/2)][x/2])
-						newMap[y][x] = fgj.def.res.default;
+						newMap[y][x] = fgj.def.res.wall;
 					else
 						newMap[y][x] = -1;
 				} else if(y%2!=0 && x%2!=0) {
 					if(!hwall[Math.floor(y/2)][Math.floor(x/2)])
-						newMap[y][x] = fgj.def.res.default;
+						newMap[y][x] = fgj.def.res.wall;
 					else if (!hwall[Math.floor(y/2)][Math.floor(x/2)+1]) {
-						newMap[y][x] = fgj.def.res.default;
+						newMap[y][x] = fgj.def.res.wall;
 					} else if(vwall[Math.floor(y/2)][Math.floor(x/2)]) {
-						newMap[y][x] = fgj.def.res.default;
+						newMap[y][x] = fgj.def.res.wall;
 					} else if(vwall[Math.floor(y/2)+1][Math.floor(x/2)]) {
-						newMap[y][x] = fgj.def.res.default;
+						newMap[y][x] = fgj.def.res.wall;
 					} else {
 						newMap[y][x] = -1;
 					}
@@ -147,11 +147,11 @@ fgj.entities.gameMap = enchant.Class.create(enchant.Map, {
 
 		var first = [];
 		for(var x=0; x<width; x++) {
-			first[x] = fgj.def.res.default;
+			first[x] = fgj.def.res.wall;
 		}
 		newMap.splice(0,0, first);
 		for(var y=0; y<height+1; y++) {
-			newMap[y].splice(0,0,fgj.def.res.default);
+			newMap[y].splice(0,0,fgj.def.res.wall);
 		}
 
 		newMap[1][0] = -1;
