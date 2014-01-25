@@ -12,7 +12,7 @@ fgj.load = function () {
 
 			game.addMainMap(gameMap);
 			game.rootScene.addChild(gameChar);
-			gameChar.setCoordinate(0,0);
+			gameChar.setCoordinate(0,1);
 		}
 		game.start();
 	}
