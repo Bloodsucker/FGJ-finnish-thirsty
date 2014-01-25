@@ -8,9 +8,10 @@ fgj.def.window = {
 
 fgj.def.res = {
 	default: 0,
+	water: 1,
 
 	image: {
-		map: "./res/map.gif",
+		map: "./res/map.png",
 		finnish : "./res/chara1.png"
 	}
 };
@@ -24,6 +25,15 @@ fgj.def.map = {
 	height: 8,
 
 	collisions: [fgj.def.res.default]
+};
+
+fgj.def.game = {
+	waterMaxLevel: 100,
+	waterDecrTime : 5,
+	waterDecrStep : 10,
+	intervalWaterDecr : 1000,
+	waterIncrDrink : 50
+
 };
 
 
