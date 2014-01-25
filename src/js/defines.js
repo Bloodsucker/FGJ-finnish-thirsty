@@ -6,6 +6,15 @@ fgj.def.window = {
 	height: 300
 };
 
+fgj.def.res = {
+	default: 0,
+
+	image: {
+		map: "./res/map.gif",
+		finnish : "./res/chara1.png"
+	}
+};
+
 fgj.def.map = {
 	tile: {
 		width: 32,
@@ -13,17 +22,12 @@ fgj.def.map = {
 	},
 	width: 30,
 	height: 30,
+
+	collisions: [fgj.def.res.default]
 };
 
-fgj.def.res = {
-	default: 0,
-	collisions: [0],
-
-	image: {
-		map: "./res/map.gif"
-	}
-};
 
 fgj.def.preload = [
-	fgj.def.res.image.map
+	fgj.def.res.image.map,
+	fgj.def.res.image.finnish
 ];

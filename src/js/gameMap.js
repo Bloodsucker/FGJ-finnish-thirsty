@@ -46,11 +46,11 @@ fgj.entities.gameMap = enchant.Class.create(enchant.Map, {
 				}
 			}
 		}
-
+		
 		return collisionMap;
 	},
 
-	checkPosition: function (coorx, coory) {
+	checkCoord: function (coorx, coory) {
 		var isCorrect = true;
 		switch (true) {
 			case coorx < 0:
