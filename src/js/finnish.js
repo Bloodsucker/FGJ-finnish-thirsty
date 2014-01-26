@@ -30,7 +30,6 @@ fgj.entities.Finnish = enchant.Class.create(enchant.Sprite, {
 		me.game.on(Event.RIGHT_BUTTON_DOWN, function(e){
 			me.rightButtonDownCmd();
 		});
-
 	},
 	getWaterLevel : function(){
 		return this.waterLevel;
@@ -67,6 +66,13 @@ fgj.entities.Finnish = enchant.Class.create(enchant.Sprite, {
 				.then(function(){
 					me.moving = false;
 				});
+
+			if(map.isTheOasis(coorx, coory)) {
+				this.win = true;
+				this.jump = true;
+
+				this.playerWin();
+			}
 		}
 	},
 	setCoordinate : function(coorx, coory){
@@ -92,6 +98,7 @@ fgj.entities.Finnish = enchant.Class.create(enchant.Sprite, {
 	},
 	downButtonDownCmd : function(){
 		if(this.moving) return;
+		if(this.win || this.lose) return;
 
 		this.decrWater(fgj.def.game.waterDecrStep);
 
@@ -104,6 +111,7 @@ fgj.entities.Finnish = enchant.Class.create(enchant.Sprite, {
 	},
 	upButtonDownCmd : function(){
 		if(this.moving) return;
+		if(this.win || this.lose) return;
 
 		this.decrWater(fgj.def.game.waterDecrStep);
 
@@ -115,6 +123,7 @@ fgj.entities.Finnish = enchant.Class.create(enchant.Sprite, {
 	},
 	leftButtonDownCmd : function(){
 		if(this.moving) return;
+		if(this.win || this.lose) return;
 
 		this.decrWater(fgj.def.game.waterDecrStep);
 
@@ -124,8 +133,9 @@ fgj.entities.Finnish = enchant.Class.create(enchant.Sprite, {
 		this.moveToCoordinate(coorx, coory);
 		this.activateEffectTile(coorx, coory);
 	}
-	,rightButtonDownCmd : function(){
+	,rightButtonDownCmd : function() {
 		if(this.moving) return;
+		if(this.win || this.lose) return;
 
 		this.decrWater(fgj.def.game.waterDecrStep);
 
@@ -141,5 +151,21 @@ fgj.entities.Finnish = enchant.Class.create(enchant.Sprite, {
 	},
 	notifyObserver : function(){
 		this.observer.updateLabel(this);
+	},
+
+	playerWin: function () {
+		this.game.win();
+		this.happyJump();
+	},
+
+	playerLose: function () {
+		this.game.lose();
+	},
+
+	happyJump: function () {
+		this.tl
+			.moveBy(0, -0.5*fgj.def.map.tile.height, 5)
+			.moveBy(0, 0.5*fgj.def.map.tile.height, 5)
+			.loop();
 	}
 });

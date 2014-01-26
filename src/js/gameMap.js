@@ -267,5 +267,13 @@ fgj.entities.gameMap = enchant.Class.create(enchant.Map, {
 		}
 
 		return pos;
+	},
+
+	isTheOasis: function (coorx, coory) {
+		if(coorx == fgj.def.map.width-1 && coory == fgj.def.map.height-2) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 });

@@ -35,5 +35,12 @@ fgj.entities.MainGame = enchant.Class.create(enchant.Game, {
 	},
 	getWaterMap : function(){
 		return this.rootScene.childNodes[this.waterMapChildNodeIndex];
+	},
+
+	win: function () {
+		$('body').addClass('win');
+	},
+	lose: function () {
+		$('body').addClass('remove');
 	}
 });
