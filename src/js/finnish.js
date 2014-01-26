@@ -72,7 +72,16 @@ fgj.entities.Finnish = enchant.Class.create(enchant.Sprite, {
 				this.jump = true;
 
 				this.playerWin();
+			} else {
+				this.decrWater(fgj.def.game.waterDecrStep);
+				if(this.waterLevel <= 0) {
+					this.lose = true;
+					this.die = true;
+					this.playerLose();
+				}
 			}
+
+			this.activateEffectTile(coorx, coory);
 		}
 	},
 	setCoordinate : function(coorx, coory){
@@ -100,50 +109,37 @@ fgj.entities.Finnish = enchant.Class.create(enchant.Sprite, {
 		if(this.moving) return;
 		if(this.win || this.lose) return;
 
-		this.decrWater(fgj.def.game.waterDecrStep);
-
 		var coorx = this.coorx;
 		var coory = this.coory+1;
 
 		this.moveToCoordinate(coorx, coory);
-
-		this.activateEffectTile(coorx, coory);
 	},
 	upButtonDownCmd : function(){
 		if(this.moving) return;
 		if(this.win || this.lose) return;
 
-		this.decrWater(fgj.def.game.waterDecrStep);
-
 		var coorx = this.coorx;
 		var coory = this.coory-1;
 
 		this.moveToCoordinate(coorx, coory);
-		this.activateEffectTile(coorx, coory);
 	},
 	leftButtonDownCmd : function(){
 		if(this.moving) return;
 		if(this.win || this.lose) return;
 
-		this.decrWater(fgj.def.game.waterDecrStep);
-
 		var coorx = this.coorx-1;
 		var coory = this.coory;
 
 		this.moveToCoordinate(coorx, coory);
-		this.activateEffectTile(coorx, coory);
 	}
 	,rightButtonDownCmd : function() {
 		if(this.moving) return;
 		if(this.win || this.lose) return;
 
-		this.decrWater(fgj.def.game.waterDecrStep);
-
 		var coorx = this.coorx+1;
 		var coory = this.coory;
 
 		this.moveToCoordinate(coorx, coory);
-		this.activateEffectTile(coorx, coory);
 	},
 	registerObserver : function(label){
 		this.observer = label;
@@ -167,5 +163,5 @@ fgj.entities.Finnish = enchant.Class.create(enchant.Sprite, {
 			.moveBy(0, -0.5*fgj.def.map.tile.height, 5)
 			.moveBy(0, 0.5*fgj.def.map.tile.height, 5)
 			.loop();
-	}
+	},
 });

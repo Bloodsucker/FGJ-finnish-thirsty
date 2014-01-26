@@ -41,6 +41,6 @@ fgj.entities.MainGame = enchant.Class.create(enchant.Game, {
 		$('body').addClass('win');
 	},
 	lose: function () {
-		$('body').addClass('remove');
+		$('body').addClass('lose');
 	}
 });
