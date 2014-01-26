@@ -14,6 +14,8 @@ fgj.entities.gameMap = enchant.Class.create(enchant.Map, {
 		this.loadData(this.vMap);
 		this.collisionData = this.createCollisionData(this.oMap);
 
+		this.listOfTilesToChange = [];
+
 		console.table(this.oMap);
 		console.table(this.collisionData);
 	},
@@ -193,6 +195,60 @@ fgj.entities.gameMap = enchant.Class.create(enchant.Map, {
 		}
 
 		return isCorrect;
+	},
+
+	randomizeMap: function (level) {
+		var maxTotalTyles = fgj.def.map.width*fgj.def.map.height*0.05;
+		var totalTyles = maxTotalTyles*(1-level/100);
+		var numberOfChanges = Math.floor(Math.random()*totalTyles);
+
+		console.log(numberOfChanges);
+
+		for(var i=0; i<numberOfChanges; i++) {
+			var coor = {
+				x: Math.floor(Math.random()*fgj.def.map.width),
+				y: Math.floor(Math.random()*fgj.def.map.height)
+			};
+			this.listOfTilesToChange[fgj.def.map.width*coor.y + coor.x] = coor;
+		}
+
+		var self = this;
+		_.each(this.listOfTilesToChange, function (coor) {
+			self.randomizeTile(coor.x, coor.y);
+		});
+
+		this.loadData(this.vMap);
+	},
+
+	randomizeTile: function (x, y) {
+		var nextTileType = fgj.def.map.crazyness[Math.floor(Math.random()*fgj.def.map.crazyness.length)];
+		this.vMap[y][x] = nextTileType;
+	},
+
+	recoverMap: function (level) {
+		var maxTotalTyles = fgj.def.map.width*fgj.def.map.height*0.5;
+		var totalTyles = maxTotalTyles*(1-level/100);
+		var numberOfChanges = Math.floor(Math.random()*totalTyles);
+
+		var toMayRecover = [];
+		_.each(this.listOfTilesToChange, function (coor) {
+			toMayRecover.push(coor);
+		});
+
+		var toMayRecover = _.shuffle(toMayRecover);
+		var toRecover = toMayRecover.splice(0, numberOfChanges);
+
+		var self = this;
+		_.each(toRecover, function (coor) {
+			self.recoverTile(coor.x, coor.y);
+			delete self.listOfTilesToChange[fgj.def.map.width*coor.y + coor.x];
+		});
+
+		this.loadData(this.vMap);
+	},
+
+	recoverTile: function (x, y) {
+		this.vMap[y][x] = this.oMap[y][x];
 	},
 
 	px2coor: function (x,y) {

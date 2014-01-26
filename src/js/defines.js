@@ -24,7 +24,8 @@ fgj.def.map = {
 	width: 15,
 	height: 9,
 
-	collisions: [fgj.def.res.wall]
+	collisions: [fgj.def.res.wall],
+	crazyness: [fgj.def.res.wall, -1, fgj.def.res.water]
 };
 
 fgj.def.game = {
@@ -32,7 +33,10 @@ fgj.def.game = {
 	waterDecrTime : 5,
 	waterDecrStep : 10,
 	intervalWaterDecr : 1000,
-	waterIncrDrink : 50
+	waterIncrDrink : 50,
+
+	randomizerFactor: 0.05,
+	recoverFactor: 0.5
 
 };
 

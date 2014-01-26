@@ -35,12 +35,13 @@ fgj.entities.Finnish = enchant.Class.create(enchant.Sprite, {
 	getWaterLevel : function(){
 		return this.waterLevel;
 	},
-	decrWater : function(decr){		
+	decrWater : function(decr){
 		this.waterLevel -= decr;
 
 		this.waterLevel = Math.max(0, this.waterLevel);
 
 		this.notifyObserver();
+		this.game.getActualMap().randomizeMap(this.waterLevel);
 	},
 	incrWater : function(incr) {		
 		this.waterLevel += incr;
@@ -48,6 +49,7 @@ fgj.entities.Finnish = enchant.Class.create(enchant.Sprite, {
 		this.waterLevel = Math.min(fgj.def.game.waterMaxLevel, this.waterLevel);
 
 		this.notifyObserver();
+		this.game.getActualMap().recoverMap(this.waterLevel);
 	},
 	moveToCoordinate : function(coorx, coory){
 		var map = this.game.getActualMap();
