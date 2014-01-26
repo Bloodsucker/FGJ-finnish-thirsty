@@ -7,8 +7,11 @@ fgj.def.window = {
 };
 
 fgj.def.res = {
-	wall: 0,
-	water: 1,
+	sand : 0,
+	wall: 1,
+	cactus1 : 2,
+	cactus2 : 3,
+	water: 4,
 	finnish : {
 		stand2Right : 0,
 		mov2Right: 1,
@@ -16,7 +19,7 @@ fgj.def.res = {
 		mov2Left : 3
 	},
 	image: {
-		map: "./res/map.png",
+		map: "./res/map.gif",
 		finnish : "./res/finnish.gif"
 	}
 };
@@ -31,8 +34,8 @@ fgj.def.map = {
 
 	numberWaterTilesPerZone: 6,
 
-	collisions: [fgj.def.res.wall],
-	crazyness: [fgj.def.res.wall, -1, fgj.def.res.water]
+	collisions: [fgj.def.res.wall, fgj.def.res.cactus1, fgj.def.res.cactus2],
+	crazyness: [fgj.def.res.wall, fgj.def.res.sand, fgj.def.res.water, fgj.def.res.cactus1, fgj.def.res.cactus2]
 };
 
 fgj.def.game = {

@@ -121,28 +121,28 @@ fgj.entities.gameMap = enchant.Class.create(enchant.Map, {
 			for(var x=0; x<width; x++) {
 				if(y%2==0 && x%2!=0) {
 					if(!vwall[y/2][Math.floor(x/2)])
-						newMap[y][x] = fgj.def.res.wall;
+						newMap[y][x] = fgj.def.map.collisions[Math.floor(Math.random()*fgj.def.map.collisions.length)];
 					else
-						newMap[y][x] = -1;
+						newMap[y][x] = fgj.def.res.sand;
 				} else if(y%2!=0 && x%2==0) {
 					if(!hwall[Math.floor(y/2)][x/2])
-						newMap[y][x] = fgj.def.res.wall;
+						newMap[y][x] = fgj.def.map.collisions[Math.floor(Math.random()*fgj.def.map.collisions.length)];
 					else
-						newMap[y][x] = -1;
+						newMap[y][x] = fgj.def.res.sand;
 				} else if(y%2!=0 && x%2!=0) {
 					if(!hwall[Math.floor(y/2)][Math.floor(x/2)])
-						newMap[y][x] = fgj.def.res.wall;
+						newMap[y][x] = fgj.def.map.collisions[Math.floor(Math.random()*fgj.def.map.collisions.length)];
 					else if (!hwall[Math.floor(y/2)][Math.floor(x/2)+1]) {
-						newMap[y][x] = fgj.def.res.wall;
+						newMap[y][x] = fgj.def.map.collisions[Math.floor(Math.random()*fgj.def.map.collisions.length)];
 					} else if(vwall[Math.floor(y/2)][Math.floor(x/2)]) {
-						newMap[y][x] = fgj.def.res.wall;
+						newMap[y][x] = fgj.def.map.collisions[Math.floor(Math.random()*fgj.def.map.collisions.length)];
 					} else if(vwall[Math.floor(y/2)+1][Math.floor(x/2)]) {
-						newMap[y][x] = fgj.def.res.wall;
+						newMap[y][x] = fgj.def.map.collisions[Math.floor(Math.random()*fgj.def.map.collisions.length)];
 					} else {
-						newMap[y][x] = -1;
+						newMap[y][x] = fgj.def.res.sand;
 					}
 				} else {
-					newMap[y][x] = -1;
+					newMap[y][x] = fgj.def.res.sand;
 				}
 			}
 		}
@@ -156,8 +156,8 @@ fgj.entities.gameMap = enchant.Class.create(enchant.Map, {
 			newMap[y].splice(0,0,fgj.def.res.wall);
 		}
 
-		newMap[1][0] = -1;
-		newMap[height-1][width] = -1;
+		newMap[1][0] = fgj.def.res.sand;
+		newMap[height-1][width] = fgj.def.res.sand;
 
 		return newMap;
 	},
