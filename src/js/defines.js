@@ -29,7 +29,7 @@ fgj.def.map = {
 	width: 29,
 	height: 9,
 
-	numberWaterTilesPerZone: 5,
+	numberWaterTilesPerZone: 6,
 
 	collisions: [fgj.def.res.wall],
 	crazyness: [fgj.def.res.wall, -1, fgj.def.res.water]
@@ -38,11 +38,11 @@ fgj.def.map = {
 fgj.def.game = {
 	waterMaxLevel: 100,
 	waterDecrTime : 5,
-	waterDecrStep : 10,
+	waterDecrStep : 5,
 	intervalWaterDecr : 1000,
 	waterIncrDrink : 50,
 
-	randomizerFactor: 0.05,
+	randomizerFactor: 0.5,
 	recoverFactor: 0.5,
 
 	directions : {
