@@ -2,7 +2,7 @@ if(!fgj) var fgj = {};
 if(!fgj.def) fgj.def = {};
 
 fgj.def.window = {
-	width: 600,
+	width: 1000,
 	height: 300
 };
 
@@ -21,7 +21,7 @@ fgj.def.map = {
 		width: 32,
 		height: 32
 	},
-	width: 15,
+	width: 29,
 	height: 9,
 
 	collisions: [fgj.def.res.wall],
