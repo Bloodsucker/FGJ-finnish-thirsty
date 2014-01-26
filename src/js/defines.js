@@ -44,10 +44,10 @@ fgj.def.map = {
 
 fgj.def.game = {
 	waterMaxLevel: 100,
-	waterDecrTime : 5,
-	waterDecrStep : 5,
+	waterDecrTime : 1,
+	waterDecrStep : 3,
 	intervalWaterDecr : 1000,
-	waterIncrDrink : 50,
+	waterIncrDrink : 20,
 
 	randomizerFactor: 0.5,
 	recoverFactor: 0.5,
