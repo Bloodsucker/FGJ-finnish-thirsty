@@ -9,10 +9,15 @@ fgj.def.window = {
 fgj.def.res = {
 	wall: 0,
 	water: 1,
-
+	finnish : {
+		stand2Right : 0,
+		mov2Right: 1,
+		stand2Left : 2,
+		mov2Left : 3
+	},
 	image: {
 		map: "./res/map.png",
-		finnish : "./res/chara1.png"
+		finnish : "./res/finnish.gif"
 	}
 };
 
@@ -36,8 +41,12 @@ fgj.def.game = {
 	waterIncrDrink : 50,
 
 	randomizerFactor: 0.05,
-	recoverFactor: 0.5
+	recoverFactor: 0.5,
 
+	directions : {
+		left : 0,
+		right : 1
+	}
 };
 
 

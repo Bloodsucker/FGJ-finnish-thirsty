@@ -6,7 +6,7 @@ fgj.entities.Finnish = enchant.Class.create(enchant.Sprite, {
 		enchant.Sprite.call(this, 32, 32);
 		var me = this;
 		this.image = game.assets[fgj.def.res.image.finnish];
-		this.frame = 5;
+		this.frame = fgj.def.res.stand2Right;
 		this.observer;
 
 		setInterval(function(){
@@ -17,6 +17,7 @@ fgj.entities.Finnish = enchant.Class.create(enchant.Sprite, {
 
 		this.game = game;
 		this.moving = false;
+		this.direction = fgj.def.game.directions.right;
 
 		me.game.on(Event.DOWN_BUTTON_DOWN, function(e){
 			me.downButtonDownCmd();
@@ -30,9 +31,25 @@ fgj.entities.Finnish = enchant.Class.create(enchant.Sprite, {
 		me.game.on(Event.RIGHT_BUTTON_DOWN, function(e){
 			me.rightButtonDownCmd();
 		});
+
+		me.game.on(Event.ENTER_FRAME, function(e){
+			me.enterFrameCmd();
+		});
+
 	},
 	getWaterLevel : function(){
 		return this.waterLevel;
+	},
+	enterFrameCmd : function(){
+		var arr = (this.direction == fgj.def.game.directions.right)? 
+				[fgj.def.res.finnish.stand2Right, fgj.def.res.finnish.mov2Right] :
+				[fgj.def.res.finnish.stand2Left, fgj.def.res.finnish.mov2Left];
+
+		if(this.moving) {
+			this.frame = arr[this.age % 2];
+		} else {
+			this.frame = arr[0];
+		}
 	},
 	decrWater : function(decr){
 		this.waterLevel -= decr;
@@ -130,6 +147,9 @@ fgj.entities.Finnish = enchant.Class.create(enchant.Sprite, {
 		var coorx = this.coorx-1;
 		var coory = this.coory;
 
+
+		this.direction = fgj.def.game.directions.left;
+
 		this.moveToCoordinate(coorx, coory);
 	}
 	,rightButtonDownCmd : function() {
@@ -138,6 +158,8 @@ fgj.entities.Finnish = enchant.Class.create(enchant.Sprite, {
 
 		var coorx = this.coorx+1;
 		var coory = this.coory;
+
+		this.direction = fgj.def.game.directions.right;
 
 		this.moveToCoordinate(coorx, coory);
 	},
