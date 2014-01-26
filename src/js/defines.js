@@ -29,6 +29,8 @@ fgj.def.map = {
 	width: 29,
 	height: 9,
 
+	numberWaterTilesPerZone: 5,
+
 	collisions: [fgj.def.res.wall],
 	crazyness: [fgj.def.res.wall, -1, fgj.def.res.water]
 };

@@ -11,7 +11,6 @@ fgj.entities.waterMap = enchant.Class.create(enchant.Map, {
 		this.wM = this.createRandomWaterMap(fgj.def.map.width, fgj.def.map.height);
 
 		this.loadData(this.wM);
-		console.table(this.wM);
 
 	},
 	createRandomWaterMap: function (width, height) {
@@ -24,12 +23,31 @@ fgj.entities.waterMap = enchant.Class.create(enchant.Map, {
 			}
 		}
 
-		for(var x=5; x<width; x++) {
-			var px = this.gameMap.coor2px(x, 3);
-			if(!this.gameMap.hitTest(px.x, px.y)) newMap[3][x] = fgj.def.res.water;
+		var candidates = [];
+		for(var y=0; y<height; y++ ) {
+			for(var x=0; x<width/2; x++ ) {
+				var px = this.gameMap.coor2px(x, y);
+				if(!this.gameMap.hitTest(px.x, px.y))
+					candidates.push({coorx: x, coory: y});
+			}
+		}
+		var toAddWater = _.shuffle(candidates).splice(0,fgj.def.map.numberWaterTilesPerZone);
+		for(var i=0; i<toAddWater.length; i++) {
+			newMap[toAddWater[i].coory][toAddWater[i].coorx] = fgj.def.res.water;
 		}
 
-		console.table(newMap);
+		var candidates = [];
+		for(var y=0; y<height; y++ ) {
+			for(var x=Math.floor(width/2); x<width; x++ ) {
+				var px = this.gameMap.coor2px(x, y);
+				if(!this.gameMap.hitTest(px.x, px.y))
+					candidates.push({coorx: x, coory: y});
+			}
+		}
+		var toAddWater = _.shuffle(candidates).splice(0,fgj.def.map.numberWaterTilesPerZone);
+		for(var i=0; i<toAddWater.length; i++) {
+			newMap[toAddWater[i].coory][toAddWater[i].coorx] = fgj.def.res.water;
+		}
 
 		return newMap;
 	},
