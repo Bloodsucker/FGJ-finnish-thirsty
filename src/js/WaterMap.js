@@ -8,7 +8,7 @@ fgj.entities.waterMap = enchant.Class.create(enchant.Map, {
 
 		this.gameMap = gameMap;
 
-		this.wM = this.createRandomWaterMap(fgj.def.map.tile.width, fgj.def.map.tile.height);
+		this.wM = this.createRandomWaterMap(fgj.def.map.width, fgj.def.map.height);
 
 		this.loadData(this.wM);
 		console.table(this.wM);
@@ -24,10 +24,12 @@ fgj.entities.waterMap = enchant.Class.create(enchant.Map, {
 			}
 		}
 
-		for(var x=5; x<width-5; x++) {
+		for(var x=5; x<width; x++) {
 			var px = this.gameMap.coor2px(x, 3);
 			if(!this.gameMap.hitTest(px.x, px.y)) newMap[3][x] = fgj.def.res.water;
 		}
+
+		console.table(newMap);
 
 		return newMap;
 	},

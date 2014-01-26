@@ -26,8 +26,6 @@ fgj.entities.MainGame = enchant.Class.create(enchant.Game, {
 
 			this.rootScene.addChild(gameChar);
 
-			this.rootScene.addChild(gameWaterLabel);
-
 			gameChar.setCoordinate(0,1);
 			gameChar.registerObserver(gameWaterLabel);
 		}
