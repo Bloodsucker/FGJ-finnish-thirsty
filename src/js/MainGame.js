@@ -28,6 +28,17 @@ fgj.entities.MainGame = enchant.Class.create(enchant.Game, {
 
 			gameChar.setCoordinate(0,1);
 			gameChar.registerObserver(gameWaterLabel);
+
+			//this.wellcome = this.assets[fgj.def.res.audio.surprise];
+			// this.bgm = this.assets[fgj.def.res.audio.gust];
+
+			// this.addEventListener(Event.ENTER_FRAME, function() {
+			// 	if (this.bgm.currentTime >= this.bgm.duration ){
+			// 		this.bgm.play();
+			// 	}
+			// });
+			// //this.wellcome.play();
+			// this.bgm.play();
 		}
 	},
 	getActualMap : function() {

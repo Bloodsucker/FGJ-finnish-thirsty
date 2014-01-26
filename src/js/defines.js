@@ -21,6 +21,10 @@ fgj.def.res = {
 	image: {
 		map: "./res/map.gif",
 		finnish : "./res/finnish.gif"
+	},
+	audio: {
+		surprise: "./res/Surprise-DJ_B-8476_hifi.mp3",
+		gust: "./res/Gust-stanfonz-8401_hifi.mp3"
 	}
 };
 
@@ -57,5 +61,7 @@ fgj.def.game = {
 
 fgj.def.preload = [
 	fgj.def.res.image.map,
-	fgj.def.res.image.finnish
+	fgj.def.res.image.finnish,
+	fgj.def.res.audio.surprise,
+	fgj.def.res.audio.gust
 ];
