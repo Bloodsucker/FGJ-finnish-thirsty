@@ -47,7 +47,7 @@ fgj.def.game = {
 	waterDecrTime : 1,
 	waterDecrStep : 3,
 	intervalWaterDecr : 1000,
-	waterIncrDrink : 20,
+	waterIncrDrink : 40,
 
 	randomizerFactor: 0.5,
 	recoverFactor: 0.5,

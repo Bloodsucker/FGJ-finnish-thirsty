@@ -5,13 +5,14 @@ fgj.entities.MainGame = enchant.Class.create(enchant.Game, {
 	initialize : function(){
 		enchant.Game.call(this, fgj.def.window.width, fgj.def.window.height);
 
-
-
 		this.mainMapChildNodeIndex = -1;
 		this.waterMapChildNodeIndex = -1;
 
 		this.preload.apply(this, fgj.def.preload);
+		var alreadyloaded = false; //Prevents that onload function executes two times without any reason.
 		this.onload = function () {
+			if(alreadyloaded) return;
+			alreadyloaded = true;
 			var gameMap = new fgj.entities.gameMap(this);
 			var gameChar = new fgj.entities.Finnish(this);
 			var gameWaterLabel = new fgj.entities.WaterLabel();
@@ -29,16 +30,16 @@ fgj.entities.MainGame = enchant.Class.create(enchant.Game, {
 			gameChar.setCoordinate(0,1);
 			gameChar.registerObserver(gameWaterLabel);
 
-			//this.wellcome = this.assets[fgj.def.res.audio.surprise];
-			// this.bgm = this.assets[fgj.def.res.audio.gust];
+			this.wellcome = this.assets[fgj.def.res.audio.surprise];
+			this.bgm = this.assets[fgj.def.res.audio.gust];
 
-			// this.addEventListener(Event.ENTER_FRAME, function() {
-			// 	if (this.bgm.currentTime >= this.bgm.duration ){
-			// 		this.bgm.play();
-			// 	}
-			// });
-			// //this.wellcome.play();
-			// this.bgm.play();
+			this.addEventListener(Event.ENTER_FRAME, function() {
+				if (this.bgm.currentTime >= this.bgm.duration ){
+					this.bgm.play();
+				}
+			});
+			this.wellcome.play();
+			this.bgm.play();
 		}
 	},
 	getActualMap : function() {
@@ -50,8 +51,11 @@ fgj.entities.MainGame = enchant.Class.create(enchant.Game, {
 
 	win: function () {
 		$('body').addClass('win');
+		this.wellcome.play();
+		this.bgm.stop();
 	},
 	lose: function () {
 		$('body').addClass('lose');
+		this.bgm.stop();
 	}
 });
